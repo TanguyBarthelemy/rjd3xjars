@@ -43,6 +43,12 @@ printFinalModel <- function(x, ...) {
   reg<-.reg_coef_table(x)
   cat("\n", "Time-dependent SARIMA model", "\n\n", sep = "")
   print(x$likelihood, ...)
+  if (! is.null(x$model$lr_test)){
+    cat("Likelihood ratio test (p-value): ", x$model$lr_test[2], sep = "")
+  }
+  if (! is.null(x$model$stationarity_test)){
+    cat("\n", "Stationarity test (p-value): ", x$model$stationarity_test[2], "\n", sep = "")
+  }
   cat("\n", "Estimated parameters", "\n", sep = "")
   if (!is.null(tdarima$coef_table)) {
     print(tdarima$coef_table, ...)
