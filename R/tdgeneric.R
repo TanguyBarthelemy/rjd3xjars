@@ -10,6 +10,27 @@ sa_decomposition.JD3_LTDARIMA_RSLTS <- function(x, ...) {
   if (is.null(x)) {
     return(NULL)
   }
+  return (.sa(x$finals))
+}
+
+#' @export
+sa_decomposition.JD3_LTDARIMA_FINAL_RSLTS <- function(x, ...) {
+  return (.sa(x))
+}
+
+#' @export
+sa_decomposition.JD3_LTDARIMA_INITIAL_RSLTS <- function(x, ...) {
+  return (.sa(x))
+}
+
+.sa<-function(x){
+  if (is.null(x)) {
+    return(NULL)
+  }
+  x<-x$decomposition
+  if (is.null(x)) {
+    return(NULL)
+  }
   decomp<-x$finals
   if (is.null(decomp)) decomp<-x$components
   return(rjd3toolkit::sadecomposition(
@@ -21,4 +42,3 @@ sa_decomposition.JD3_LTDARIMA_RSLTS <- function(x, ...) {
     FALSE
   ))
 }
-
