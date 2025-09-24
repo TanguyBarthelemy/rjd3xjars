@@ -86,7 +86,9 @@ ltdarima_decomposition<-function(data, regular, seasonal, p0, p1, var1=1, se=FAL
     p<-.linear(p0, p1, n)
   }
   if (var1 != 1){
-    var<-matrix(.linear(1, var1, n), nrow = 1, ncol=n)
+    # the stderr are linear, not the var !!
+    et<-.linear(1, sqrt(var1), n)
+    var<-matrix(et*et, nrow = 1, ncol=n)
     p<-rbind(p, var)
   }
   if (is.null(p)){
