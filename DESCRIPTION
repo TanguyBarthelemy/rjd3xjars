@@ -21,7 +21,7 @@ LazyData: TRUE
 Suggests:
     knitr,
     rmarkdown
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 BugReports: https://github.com/rjdverse/rjd3sax/issues
 Encoding: UTF-8
 Collate: 

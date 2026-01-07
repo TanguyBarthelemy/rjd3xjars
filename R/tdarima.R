@@ -7,6 +7,7 @@ LTDARIMA_LL<-'JD3_LTDARIMA_LIKELIHOOD'
 LTDARIMA_INITIAL<-'JD3_LTDARIMA_INITIAL_RSLTS'
 LTDARIMA_FINAL<-'JD3_LTDARIMA_FINAL_RSLTS'
 
+TDARIMA_DECOMPOSITION<-'JD3_TDARIMA_DECOMPOSITION_RSLTS'
 
 #' Estimation by means of the Kalman smoother of a time-dependent canonical decomposition
 #' of airline models
@@ -73,7 +74,7 @@ tdairline_decomposition<-function(data, th, bth, se=FALSE){
 #'  fixed_var=FALSE, eps=1e-15, parametrization = "mean_delta")
 #' sa<-rjd3sax::ltdarima_decomposition(s, c(0,1,1), c(0,1,1),
 #' q$final$model$parima_0, q$final$model$parima_1, var1=q$final$model$parameters[5], se=TRUE)
-#' ts.plot(ts.union(s, sa[,1], sa[,1]+sa[,3]), col=c('gray', 'blue', 'magenta'))
+#' ts.plot(ts.union(s, sa$components[,1], sa$components[,1]+sa$components_stdev[,1]), col=c('gray', 'blue', 'magenta'))
 ltdarima_decomposition<-function(data, regular, seasonal, p0, p1, var1=1, se=FALSE){
   if (! is.ts(data)) stop("data should be a time series (ts)")
   m<-length(p0)
@@ -98,19 +99,31 @@ ltdarima_decomposition<-function(data, regular, seasonal, p0, p1, var1=1, se=FAL
     jp<-.r2jd_matrix(p)
   }
 
-  jmatrix<-.jcall('jdplus/advancedsa/base/r/TimeVaryingArimaModels', 'Ljdplus/toolkit/base/api/math/matrices/Matrix;', 'arimaDecomposition',
+  jrslts<-.jcall('jdplus/advancedsa/base/r/TimeVaryingArimaModels', 'Ljdplus/advancedsa/base/r/TimeVaryingArimaModels$DecompositionResults;', 'arimaDecomposition',
                   as.numeric(data), as.integer(frequency(data)), as.integer(regular), as.integer(seasonal), as.logical(var1 != 1), jp, as.logical(se))
-  if (is.jnull(jmatrix)) return (NULL)
-  z<-rjd3toolkit::.jd2r_matrix(jmatrix)
-  ncmps<-dim(z)[2]
-  if (se)    ncmps<-ncmps/2
+  if (is.jnull(jrslts)) return (NULL)
+  jcmps<-.jcall(jrslts, 'Ljdplus/toolkit/base/api/math/matrices/Matrix;', 'getComponents')
+  cmps<-rjd3toolkit::.jd2r_matrix(jcmps)
+  ncmps<-dim(cmps)[2]
   if (ncmps == 3)  names<-c("trend", "seasonal", "irregular")else names <-c("trend", "irregular")
+  colnames(cmps)<-names
+  cmps<-ts(cmps, frequency=frequency(data), start=start(data))
   if (se){
-    names<-c(names, paste0(names, "-stdev"))
+    jecmps<-.jcall(jrslts, 'Ljdplus/toolkit/base/api/math/matrices/Matrix;', 'getComponentsStdev')
+    ecmps<-rjd3toolkit::.jd2r_matrix(jecmps)
+    enames<-paste0(names, "-stdev")
+    colnames(ecmps)<-enames
+    ecmps<-ts(ecmps, frequency=frequency(data), start=start(data))
   }
-  colnames(z)<-names
-  all<-ts(z, frequency=frequency(data), start=start(data))
-  return (all)
+
+  return (structure(list(
+    components=cmps,
+    components_stdev=ecmps,
+    direct_likelihood=structure(.proc_likelihood(jrslts, "direct_ll."), class=LTDARIMA_LL),
+    decomposition_likelihood=structure(.proc_likelihood(jrslts, "decomposition_ll."), class=LTDARIMA_LL),
+    direct_res=.proc_vector(jrslts, "direct_res"),
+    decomposition_res=.proc_vector(jrslts, "decomposition_res")
+  ), class=TDARIMA_DECOMPOSITION))
 }
 
 .pcount<-function(regular, seasonal){
@@ -145,8 +158,8 @@ ltdarima_decomposition<-function(data, regular, seasonal, p0, p1, var1=1, se=FAL
 #' p<-matrix(r, nrow=2, ncol=n)
 #' p<-rbind(p, runif(n))
 #' sa<-rjd3sax::tdarima_decomposition(s, c(0,1,1), c(0,1,1),parameter=p, se=TRUE)
-#' ts.plot(ts.union(s, sa[,1], sa[,1]+sa[,3]), col=c('gray', 'blue', 'magenta'))
-#' ts.plot(sa[,c(4,5,6)], col=c('red', 'blue', 'magenta'))
+#' ts.plot(ts.union(s, sa$components[,1], sa$components[,1]+sa$components[,3]), col=c('gray', 'blue', 'magenta'))
+#' ts.plot(sa$components_stdev, col=c('red', 'blue', 'magenta'))
 tdarima_decomposition<-function(data, regular, seasonal, parameters, se=FALSE){
   if (! is.ts(data)) stop("data should be a time series (ts)")
   if (! is.matrix(parameters)) stop("parameters should be a matrix")
@@ -158,19 +171,31 @@ tdarima_decomposition<-function(data, regular, seasonal, parameters, se=FALSE){
   if (d[1] != m && d[1] != m+1) stop("invalid parameters")
   var = d[1]>m
   jp<-.r2jd_matrix(parameters)
-  jmatrix<-.jcall('jdplus/advancedsa/base/r/TimeVaryingArimaModels', 'Ljdplus/toolkit/base/api/math/matrices/Matrix;', 'arimaDecomposition',
-                  as.numeric(data), as.integer(frequency(data)), as.integer(regular), as.integer(seasonal), as.logical(var), jp, as.logical(se))
-  if (is.jnull(jmatrix)) return (NULL)
-  z<-rjd3toolkit::.jd2r_matrix(jmatrix)
-  ncmps<-dim(z)[2]
-  if (se)    ncmps<-ncmps/2
+  jrslts<-.jcall('jdplus/advancedsa/base/r/TimeVaryingArimaModels', 'Ljdplus/advancedsa/base/r/TimeVaryingArimaModels$DecompositionResults;', 'arimaDecomposition',
+                 as.numeric(data), as.integer(frequency(data)), as.integer(regular), as.integer(seasonal), as.logical(var), jp, as.logical(se))
+  if (is.jnull(jrslts)) return (NULL)
+  jcmps<-.jcall(jrslts, 'Ljdplus/toolkit/base/api/math/matrices/Matrix;', 'getComponents')
+  cmps<-rjd3toolkit::.jd2r_matrix(jcmps)
+  ncmps<-dim(cmps)[2]
   if (ncmps == 3)  names<-c("trend", "seasonal", "irregular")else names <-c("trend", "irregular")
+  colnames(cmps)<-names
+  cmps<-ts(cmps, frequency=frequency(data), start=start(data))
   if (se){
-    names<-c(names, paste0(names, "-stdev"))
+    jecmps<-.jcall(jrslts, 'Ljdplus/toolkit/base/api/math/matrices/Matrix;', 'getComponentsStdev')
+    ecmps<-rjd3toolkit::.jd2r_matrix(jecmps)
+    enames<-paste0(names, "-stdev")
+    colnames(ecmps)<-enames
+    ecmps<-ts(ecmps, frequency=frequency(data), start=start(data))
   }
-  colnames(z)<-names
-  all<-ts(z, frequency=frequency(data), start=start(data))
-  return (all)
+
+  return (structure(list(
+    components=cmps,
+    components_stdev=ecmps,
+    direct_likelihood=structure(.proc_likelihood(jrslts, "direct_ll."), class=LTDARIMA_LL),
+    decomposition_likelihood=structure(.proc_likelihood(jrslts, "decomposition_ll."), class=LTDARIMA_LL),
+    direct_res=.proc_vector(jrslts, "direct_res"),
+    decomposition_res=.proc_vector(jrslts, "decomposition_res")
+  ), class=TDARIMA_DECOMPOSITION))
 }
 
 .linear<-function(p0, p1, n){
@@ -386,13 +411,13 @@ ltdarima_estimation<-function(data, mean=FALSE, X=NULL, regular=c(0,1,1), season
     if (! is.null(cmps)){
       components<-list(
         y=flin,
-        sa=cmps[,1]+cmps[,3],
-        trend=cmps[,1],
-        seas=cmps[,2],
-        irregular=cmps[,3],
-        trend_stdev=cmps[,4],
-        seas_stdev=cmps[,5],
-        irregular_stdev=cmps[,6]
+        sa=cmps$components[,1]+cmps$components[,3],
+        trend=cmps$components[,1],
+        seas=cmps$components[,2],
+        irregular=cmps$components[,3],
+        trend_stdev=cmps$components_stdev[,1],
+        seas_stdev=cmps$components_stdev[,2],
+        irregular_stdev=cmps$components_stdev[,3]
       )
       finals<-NULL
       if (!is.null(X) && ! is.null(regeffects)){
@@ -400,7 +425,11 @@ ltdarima_estimation<-function(data, mean=FALSE, X=NULL, regular=c(0,1,1), season
       }
       sa1<-list(
         components=components,
-        finals=finals
+        finals=finals,
+        direct_likelihood=cmps$direct_likelihood,
+        decomposition_likelihood=cmps$decomposition_likelihood,
+        direct_res=cmps$direct_res,
+        decomposition_res=cmps$decomposition_res
       )
     }
     final[["decomposition"]]=sa1

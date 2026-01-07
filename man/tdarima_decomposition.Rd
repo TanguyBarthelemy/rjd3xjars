@@ -36,6 +36,6 @@ r<-runif(n*2,-1,-.6)
 p<-matrix(r, nrow=2, ncol=n)
 p<-rbind(p, runif(n))
 sa<-rjd3sax::tdarima_decomposition(s, c(0,1,1), c(0,1,1),parameter=p, se=TRUE)
-ts.plot(ts.union(s, sa[,1], sa[,1]+sa[,3]), col=c('gray', 'blue', 'magenta'))
-ts.plot(sa[,c(4,5,6)], col=c('red', 'blue', 'magenta'))
+ts.plot(ts.union(s, sa$components[,1], sa$components[,1]+sa$components[,3]), col=c('gray', 'blue', 'magenta'))
+ts.plot(sa$components_stdev, col=c('red', 'blue', 'magenta'))
 }

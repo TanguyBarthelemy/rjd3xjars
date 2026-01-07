@@ -5,7 +5,7 @@
 plot.JD3_LTDARIMA_INITIAL_RSLTS <- function(x, first_date = NULL, last_date = NULL,
                                       type_chart = c("sa-trend", "seas-irr"),
                                       caption = c(
-                                        "sa-trend" = "Y, Sa, trend (initial)",
+                                        "sa-trend" = "Y, Sa, T (initial)",
                                         "seas-irr" = "Sea., irr. (initial)"
                                       )[type_chart],
                                       colors = c(
@@ -29,8 +29,8 @@ plot.JD3_LTDARIMA_INITIAL_RSLTS <- function(x, first_date = NULL, last_date = NU
 plot.JD3_LTDARIMA_FINAL_RSLTS <- function(x, first_date = NULL, last_date = NULL,
                                             type_chart = c("sa-trend", "seas-irr"),
                                             caption = c(
-                                              "sa-trend" = "Y, Sa, trend (time-dependent)" ,
-                                              "seas-irr" = "Sea., irr. (time-dependent)"
+                                              "sa-trend" = "Y, Sa, T (TD)" ,
+                                              "seas-irr" = "Sea., irr. (TD)"
                                             )[type_chart],
                                             colors = c(
                                               y = "#F0B400", t = "#1E6C0B", sa = "#155692",

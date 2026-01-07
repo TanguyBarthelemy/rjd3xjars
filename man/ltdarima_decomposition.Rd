@@ -39,5 +39,5 @@ q<-rjd3sax::ltdarima_estimation(s, regular=c(0,1,1), seasonal=c(0,1,1),
  fixed_var=FALSE, eps=1e-15, parametrization = "mean_delta")
 sa<-rjd3sax::ltdarima_decomposition(s, c(0,1,1), c(0,1,1),
 q$final$model$parima_0, q$final$model$parima_1, var1=q$final$model$parameters[5], se=TRUE)
-ts.plot(ts.union(s, sa[,1], sa[,1]+sa[,3]), col=c('gray', 'blue', 'magenta'))
+ts.plot(ts.union(s, sa$components[,1], sa$components[,1]+sa$components_stdev[,1]), col=c('gray', 'blue', 'magenta'))
 }

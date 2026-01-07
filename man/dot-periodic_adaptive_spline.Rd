@@ -18,7 +18,25 @@
 )
 }
 \arguments{
-\item{threshold}{}
+\item{x}{Abscissa of the points}
+
+\item{y}{Ordinate of the points}
+
+\item{period}{Period of the splines}
+
+\item{nknots}{Number of knots (the knots will be put uniformely in the period)}
+
+\item{knots}{Position of the knots}
+
+\item{order}{Order of the spline}
+
+\item{lambda}{Penalty in the ridge equation}
+
+\item{maxiter}{Max number of iteration}
+
+\item{precision}{Precision computed by the norm2 of the difference between two successive sets of coefficients of the splines. The iterations are stopped if that norm is lower than the precision}
+
+\item{threshold}{Threshold used to select a knot, based on the z-values (near 0 or 1 if the knot is discarded or selected); for instance .99.}
 }
 \description{
 Title
