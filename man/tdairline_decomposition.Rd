@@ -24,10 +24,12 @@ Estimation by means of the Kalman smoother of a time-dependent canonical decompo
 of airline models
 }
 \examples{
-s<-rjd3toolkit::ABS$X0.2.09.10.M
-th<-seq(.2,-.9, -1.1/(length(s)-1))
-bth<-seq(-.9,-.2, .7/(length(s)-1))
-sa<-tdairline_decomposition(s, th, bth, se=TRUE)
-ts.plot(ts.union(s, sa[,1], sa[,1]+sa[,3]), col=c('gray', 'blue', 'red'))
-ts.plot(sa[,c(4,5,6)], col=c('red', 'blue', 'magenta'))
+\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
+s <- rjd3toolkit::ABS$X0.2.09.10.M
+th <- seq(.2, -.9, -1.1 / (length(s) - 1))
+bth <- seq(-.9, -.2, .7 / (length(s) - 1))
+sa <- tdairline_decomposition(s, th, bth, se = TRUE)
+ts.plot(ts.union(s, sa[, 1], sa[, 1] + sa[, 3]), col = c('gray', 'blue', 'red'))
+ts.plot(sa[, c(4, 5, 6)], col = c('red', 'blue', 'magenta'))
+\dontshow{\}) # examplesIf}
 }

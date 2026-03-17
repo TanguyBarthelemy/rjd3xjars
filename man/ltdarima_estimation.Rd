@@ -66,8 +66,17 @@ A JD3_LTDARIMA_RSLTS object
 Estimation and decomposition of a regression model with linear time-dependent SARIMA noises
 }
 \examples{
-s<-rjd3toolkit::ABS$X0.2.09.10.M
-td<-rjd3toolkit::td(s=s)
-q<-rjd3sax::ltdarima_estimation(s, regular=c(0,1,1), seasonal=c(0,1,1), X=td,
- fixed_var = FALSE, eps=1e-15, parametrization = "mean_delta")
+\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
+s <- rjd3toolkit::ABS$X0.2.09.10.M
+td <- rjd3toolkit::td(s = s)
+q <- rjd3advsajars::ltdarima_estimation(
+    s,
+    regular = c(0, 1, 1),
+    seasonal = c(0, 1, 1),
+    X = td,
+    fixed_var = FALSE,
+    eps = 1e-15,
+    parametrization = "mean_delta"
+)
+\dontshow{\}) # examplesIf}
 }

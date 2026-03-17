@@ -30,12 +30,23 @@ Estimation by means of the Kalman smoother of a time-dependent canonical decompo
 The arima parameters are organized in the following order: phi, bphi, theta, btheta
 }
 \examples{
-s<-rjd3toolkit::ABS$X0.2.09.10.M
-n<-length(s)
-r<-runif(n*2,-1,-.6)
-p<-matrix(r, nrow=2, ncol=n)
-p<-rbind(p, runif(n))
-sa<-rjd3sax::tdarima_decomposition(s, c(0,1,1), c(0,1,1),parameter=p, se=TRUE)
-ts.plot(ts.union(s, sa$components[,1], sa$components[,1]+sa$components[,3]), col=c('gray', 'blue', 'magenta'))
-ts.plot(sa$components_stdev, col=c('red', 'blue', 'magenta'))
+\dontshow{if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) withAutoprint(\{ # examplesIf}
+s <- rjd3toolkit::ABS$X0.2.09.10.M
+n <- length(s)
+r <- runif(n * 2, -1, -.6)
+p <- matrix(r, nrow = 2, ncol = n)
+p <- rbind(p, runif(n))
+sa <- rjd3advsajars::tdarima_decomposition(
+    s,
+    c(0, 1, 1),
+    c(0, 1, 1),
+    parameter = p,
+    se = TRUE
+)
+ts.plot(
+    ts.union(s, sa$components[, 1], sa$components[, 1] + sa$components[, 3]),
+    col = c('gray', 'blue', 'magenta')
+)
+ts.plot(sa$components_stdev, col = c('red', 'blue', 'magenta'))
+\dontshow{\}) # examplesIf}
 }
