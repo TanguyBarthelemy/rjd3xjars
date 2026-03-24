@@ -1,7 +1,3 @@
-#' @include utils.R tdarima_plot.R tdarima_print.R
-#' @include jd3spreadsheet.R jd3txt.R jd3xml.R
-NULL
-
 #' @importFrom rJava .jpackage .jcall
 #' @importFrom rjd3toolkit get_java_version minimal_java_version
 .onAttach <- function(libname, pkgname) {

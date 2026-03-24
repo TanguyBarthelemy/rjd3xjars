@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rjd3advsajars
+# rjd3xjars
 
 <!-- badges: start -->
 
@@ -27,23 +27,23 @@ To get the current stable version (from the latest release):
 ``` r
 # install.packages("remotes")
 remotes::install_github("rjdverse/rjd3toolkit@*release")
-remotes::install_github("rjdverse/rjd3advsajars@*release")
+remotes::install_github("rjdverse/rjd3xjars@*release")
 ```
 
-- From [r-universe](https://rjdverse.r-universe.dev/rjd3advsajars):
+- From [r-universe](https://rjdverse.r-universe.dev/rjdxjars):
 
 ``` r
-install.packages("rjd3advsajars", repos = c("https://rjdverse.r-universe.dev", "https://cloud.r-project.org"))
+install.packages("rjd3xjars", repos = c("https://rjdverse.r-universe.dev", "https://cloud.r-project.org"))
 ```
 
 ### Development version
 
-You can install the development version of **rjd3advsajars** from
+You can install the development version of **rjd3xjars** from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("rjdverse/rjd3advsajars")
+remotes::install_github("rjdverse/rjd3xjars")
 ```
 
 ## Package Maintenance and contributing
