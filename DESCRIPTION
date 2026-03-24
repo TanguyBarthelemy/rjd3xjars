@@ -14,7 +14,7 @@ Imports:
   rjd3toolkit (>= 3.7.1)
 SystemRequirements: Java (>= 21)
 License: EUPL
-URL: https://github.com/rjdverse/rjd3advsajars, https://rjdverse.github.io/rjd3xjars/
+URL: https://github.com/rjdverse/rjd3xjars, https://rjdverse.github.io/rjd3xjars/
 LazyData: TRUE
 Suggests:
     knitr,

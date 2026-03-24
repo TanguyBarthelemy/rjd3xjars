@@ -26,11 +26,10 @@ To get the current stable version (from the latest release):
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("rjdverse/rjd3toolkit@*release")
 remotes::install_github("rjdverse/rjd3xjars@*release")
 ```
 
-- From [r-universe](https://rjdverse.r-universe.dev/rjdxjars):
+- From [r-universe](https://rjdverse.r-universe.dev/rjd3xjars):
 
 ``` r
 install.packages("rjd3xjars", repos = c("https://rjdverse.r-universe.dev", "https://cloud.r-project.org"))
