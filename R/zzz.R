@@ -13,7 +13,8 @@
 #' @importFrom rJava .jpackage .jcall .jaddClassPath
 .onLoad <- function(libname, pkgname) {
     jar_dir <- file.path(libname, pkgname, "inst", "java")
-    jars <- list.files(jar_dir, pattern = "\\.jar$", full.names = TRUE, all.files = TRUE)
+    jars <- list.files(jar_dir, pattern = "\\.jar$", full.names = TRUE,
+                       all.files = TRUE)
     rJava::.jaddClassPath(jars)
     result <- rJava::.jpackage(pkgname, lib.loc = libname)
     if (!result) stop("Loading java packages failed", call. = FALSE)
