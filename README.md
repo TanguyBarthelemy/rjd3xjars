@@ -14,28 +14,9 @@ dependent ARIMA) as implemented in JDemetra+ v3.x.
 
 ## Installation
 
-Running rjd3 packages requires **Java 17 or higher**. How to set up such
+Running rjd3 packages requires **Java 21 or higher**. How to set up such
 a configuration in R is explained
 [here](https://jdemetra-new-documentation.netlify.app/#Rconfig)
-
-### Latest release
-
-To get the current stable version (from the latest release):
-
-- From GitHub:
-
-``` r
-# install.packages("remotes")
-remotes::install_github("rjdverse/rjd3xjars@*release")
-```
-
-- From [r-universe](https://rjdverse.r-universe.dev/rjd3xjars):
-
-``` r
-install.packages("rjd3xjars", repos = c("https://rjdverse.r-universe.dev", "https://cloud.r-project.org"))
-```
-
-### Development version
 
 You can install the development version of **rjd3xjars** from
 [GitHub](https://github.com/) with:
