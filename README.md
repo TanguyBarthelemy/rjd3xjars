@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Mentioned in Awesome Official
-Statistics](https://awesome.re/mentioned-badge.svg)](http://www.awesomeofficialstatistics.org)
+Statistics](https://awesome.re/mentioned-badge.svg)](https://github.com/SNStatComp/awesome-official-statistics-software)
 <!-- badges: end -->
 
 R interface giving access to advanced SA methods (for instance time

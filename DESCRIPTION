@@ -1,6 +1,6 @@
 Package: rjd3xjars
 Type: Package
-Title: R Interface to 'JDemetra+ 3.x' time series analysis software
+Title: R Interface to 'JDemetra+ 3.x' Time Series Analysis Software
 Version: 0.1.0
 Authors@R: c(
     person("Jean", "Palate", , "palatejean@gmail.com", role = "aut"),
@@ -15,7 +15,7 @@ Imports:
   rjd3toolkit (>= 3.7.1)
 SystemRequirements: Java (>= 21)
 License: EUPL
-URL: https://github.com/rjdverse/rjd3xjars, https://rjdverse.github.io/rjd3xjars/
+URL: https://github.com/rjdverse/rjd3xjars
 LazyData: TRUE
 Suggests:
     knitr,

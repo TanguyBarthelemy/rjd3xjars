@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 # rjd3xjars
 
 <!-- badges: start -->
-[![Mentioned in Awesome Official Statistics ](https://awesome.re/mentioned-badge.svg)](http://www.awesomeofficialstatistics.org)
+[![Mentioned in Awesome Official Statistics ](https://awesome.re/mentioned-badge.svg)](https://github.com/SNStatComp/awesome-official-statistics-software)
 <!-- badges: end -->
 
 R interface giving access to advanced SA methods (for instance time dependent ARIMA) as implemented in JDemetra+ v3.x.
