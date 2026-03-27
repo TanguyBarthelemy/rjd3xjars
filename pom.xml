@@ -17,18 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>eu.europa.ec.joinup.sat</groupId>
-			<artifactId>jdplus-sts-base-r</artifactId>
-			<version>${jdplus-incubator.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>*</groupId>
-					<artifactId>jdplus-toolkit-base-r</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>eu.europa.ec.joinup.sat</groupId>
-			<artifactId>jdplus-sts-base-core</artifactId>
+			<artifactId>jdplus-highfreq-base-core</artifactId>
 			<version>${jdplus-incubator.version}</version>
 			<exclusions>
 				<exclusion>
@@ -39,7 +28,7 @@
 		</dependency>
 		<dependency>
 			<groupId>eu.europa.ec.joinup.sat</groupId>
-			<artifactId>jdplus-sts-base-api</artifactId>
+			<artifactId>jdplus-highfreq-base-api</artifactId>
 			<version>${jdplus-incubator.version}</version>
 			<exclusions>
 				<exclusion>
@@ -51,6 +40,21 @@
 		</dependency>
 		<dependency>
 			<groupId>eu.europa.ec.joinup.sat</groupId>
+			<artifactId>jdplus-sts-base-core</artifactId>
+			<version>${jdplus-incubator.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>jdplus-advancedsa-base-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>jdplus-advancedsa-base-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!--dependency>
+			<groupId>eu.europa.ec.joinup.sat</groupId>
 			<artifactId>jdplus-sts-base-io</artifactId>
 			<version>${jdplus-incubator.version}</version>
 			<exclusions>
@@ -59,18 +63,7 @@
 					<artifactId>*</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>eu.europa.ec.joinup.sat</groupId>
-			<artifactId>jdplus-advancedsa-base-r</artifactId>
-			<version>${jdplus-incubator.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>*</groupId>
-					<artifactId>*</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+		</dependency-->
 	</dependencies>
 
 	<build>
