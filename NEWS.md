@@ -7,7 +7,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [2.4.1] - 2026-04-08
+## [0.1.0] - 2026-04-08
 
 ### Added
 
@@ -16,4 +16,4 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
 [Unreleased]: https://github.com/rjdverse/rjd3xjars
-[2.4.1]: https://github.com/rjdverse/rjd3xjars/tree/bd85aff08915c4c145131843d04b7bff503d9dfd
+[0.1.0]: https://github.com/rjdverse/rjd3xjars/tree/bd85aff08915c4c145131843d04b7bff503d9dfd
