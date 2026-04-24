@@ -1,7 +1,7 @@
 Package: rjd3xjars
 Type: Package
 Title: Interface to 'JDemetra+ 3.x' Time Series Analysis Software
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: c(
     person("Jean", "Palate", , "palatejean@gmail.com", role = "aut"),
     person("Tanguy", "Barthelemy", , "tanguy.barthelemy@insee.fr", role = c("aut", "cre"))
