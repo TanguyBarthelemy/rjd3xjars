@@ -1,12 +1,13 @@
 Package: rjd3xjars
 Type: Package
-Title: R Interface to 'JDemetra+ 3.x' time series analysis software
+Title: Interface to 'JDemetra+ 3.x' Time Series Analysis Software
 Version: 0.1.0
 Authors@R: c(
-  person("Jean", "Palate", role = c("aut", "cre"),
-                email = "palatejean@gmail.com"))
+    person("Jean", "Palate", , "palatejean@gmail.com", role = "aut"),
+    person("Tanguy", "Barthelemy", , "tanguy.barthelemy@insee.fr", role = c("aut", "cre"))
+  )
 Description: R Interface to 'JDemetra+ 3.x' (<https://github.com/jdemetra>) time series analysis software.
- It provides functions allowing to decompose a time series, including high-frequency data with multiple periodicities.
+  It provides functions allowing to decompose a time series, including high-frequency data with multiple periodicities.
 Depends:
   R (>= 4.1.0)
 Imports:
@@ -14,7 +15,7 @@ Imports:
   rjd3toolkit (>= 3.7.1)
 SystemRequirements: Java (>= 21)
 License: EUPL
-URL: https://github.com/rjdverse/rjd3xjars, https://rjdverse.github.io/rjd3xjars/
+URL: https://github.com/rjdverse/rjd3xjars
 LazyData: TRUE
 Suggests:
     knitr,
@@ -23,4 +24,5 @@ RoxygenNote: 7.3.3
 BugReports: https://github.com/rjdverse/rjd3xjars/issues
 Encoding: UTF-8
 Collate: 
+    'rjd3xjars-package.R'
     'zzz.R'

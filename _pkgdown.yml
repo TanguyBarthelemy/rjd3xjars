@@ -1,0 +1,47 @@
+url: https://rjdverse.github.io/rjd3xjars/
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left:
+    - home
+    - reference
+    - news
+    - rpackages
+    right:
+    - jdemetra
+    - github
+  components:
+    home:
+      icon: fa-home fa-lg
+      href: index.html
+      aria-label: Home
+    reference:
+      text: Reference
+      href: reference/index.html
+    news:
+      text: News
+      href: news/index.html
+    rpackages:
+      text: Around JDemetra+ and R
+      menu:
+      - text: rjd3jars
+        href: https://github.com/rjdverse/rjd3jars
+      - text: rjd3toolkit
+        href: https://github.com/rjdverse/rjd3toolkit
+      - text: rjd3sts
+        href: https://github.com/rjdverse/rjd3sts
+      - text: rjd3highfreq
+        href: https://github.com/rjdverse/rjd3highfreq
+    jdemetra:
+      text: JDemetra+
+      menu:
+      - text: Download JDemetra+
+        href: https://github.com/jdemetra/jdemetra-app/releases
+      - text: JDemetra+ documentation
+        href: https://jdemetra-new-documentation.netlify.app/
+    github:
+      icon: fa-github fa-lg
+      href: https://github.com/rjdverse/rjd3xjars
+      aria-label: GitHub
