@@ -7,10 +7,6 @@
     if (!requireNamespace("rjd3jars", quietly = TRUE)) {
         stop("Loading {rjd3jars} failed", call. = FALSE)
     }
-    # Loading dependencies
-    if (!requireNamespace("rjd3toolkit", quietly = TRUE)) {
-        stop("Loading {rjd3toolkit} failed", call. = FALSE)
-    }
 
     # Loading Java class
     jar_dir <- file.path(libname, pkgname, "inst", "java")
