@@ -1,5 +1,4 @@
 
-#' @importFrom RProtoBuf readProtoFiles2
 #' @importFrom rJava .jpackage
 #' @importFrom rjd3jars check_java_version reload_dictionaries
 .onLoad <- function(libname, pkgname) {
@@ -22,7 +21,7 @@
         morePaths = jars_inst
     )
     if (!result) {
-        stop("Loading java packages failed")
+        stop("Loading java packages failed", call. = FALSE)
     }
 
     has_java <- rjd3jars::check_java_version()
