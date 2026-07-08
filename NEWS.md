@@ -9,7 +9,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-- Updated JARS from jdplus-main to [null object or invalid expression](https://github.com/jdemetra/jdplus-main/releases/tag/vnull object or invalid expression)
+* New .jar files added (related to [v2.5.2](https://github.com/jdemetra/jdplus-incubator/releases/tag/v2.5.2))
+
 
 ## [0.1.1] - 2026-07-08
 
