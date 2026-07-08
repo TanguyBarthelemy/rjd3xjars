@@ -4,7 +4,7 @@
 \name{rjd3xjars-package}
 \alias{rjd3xjars}
 \alias{rjd3xjars-package}
-\title{rjd3xjars: R Interface to 'JDemetra+ 3.x' Time Series Analysis Software}
+\title{rjd3xjars: Interface to 'JDemetra+ 3.x' Time Series Analysis Software}
 \description{
 R Interface to 'JDemetra+ 3.x' (\url{https://github.com/jdemetra}) time series analysis software. It provides functions allowing to decompose a time series, including high-frequency data with multiple periodicities.
 }
@@ -21,6 +21,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Tanguy Barthelemy \email{tanguy.barthelemy@insee.fr}
   \item Jean Palate \email{palatejean@gmail.com}
 }
 
