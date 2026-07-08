@@ -14,10 +14,10 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Tanguy Barthelemy <tanguy.barthelemy@insee.fr>
+**Maintainer**: Tanguy Barthelemy <timeserieswithjdemetraandr@gmail.com>
 
 Authors:
 
-- Tanguy Barthelemy <tanguy.barthelemy@insee.fr>
+- Tanguy Barthelemy <timeserieswithjdemetraandr@gmail.com>
 
 - Jean Palate <palatejean@gmail.com>
