@@ -25,3 +25,5 @@ SystemRequirements: Java (>= 21)
 Collate: 
     'rjd3xjars-package.R'
     'zzz.R'
+Remotes:  
+    github::rjdverse/rjd3jars
