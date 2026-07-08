@@ -1,32 +1,37 @@
-#' @importFrom rjd3toolkit get_java_version minimal_java_version
+#' @importFrom rjd3jars check_java_version
 .onAttach <- function(libname, pkgname) {
-    if (rjd3toolkit::get_java_version() < rjd3toolkit::minimal_java_version) {
-        packageStartupMessage(sprintf(
-            "Your java version is %s. %s or higher is needed.",
-            rjd3toolkit::get_java_version(),
-            rjd3toolkit::minimal_java_version
-        ))
-    }
+    # Check java version
+    rjd3jars::check_java_version(silent = FALSE, startup = TRUE)
 }
 
-#' @importFrom rjd3toolkit get_java_version minimal_java_version
-#' @importFrom rJava .jpackage .jcall .jaddClassPath
+#' @importFrom rJava .jpackage
+#' @importFrom rjd3jars check_java_version reload_dictionaries
 .onLoad <- function(libname, pkgname) {
-    jar_dir <- file.path(libname, pkgname, "inst", "java")
-    jars <- list.files(jar_dir, pattern = "\\.jar$", full.names = TRUE,
-                       all.files = TRUE)
-    rJava::.jaddClassPath(jars)
-    result <- rJava::.jpackage(pkgname, lib.loc = libname)
-    if (!result) stop("Loading java packages failed", call. = FALSE)
+    # Loading dependencies
+    if (!requireNamespace("rjd3jars", quietly = TRUE)) {
+        stop("Loading {rjd3jars} failed", call. = FALSE)
+    }
 
-    if (rjd3toolkit::get_java_version() >= rjd3toolkit::minimal_java_version) {
-        # Reload extractors
-        try({
-            rJava::.jcall(
-                obj = "jdplus/toolkit/base/api/information/InformationExtractors",
-                returnSig = "V",
-                method = "reloadExtractors"
-            )
-        })
+    # Loading Java class
+    jar_dir <- file.path(libname, pkgname, "inst", "java")
+    jars_inst <- list.files(
+        jar_dir,
+        pattern = "\\.jar$",
+        full.names = TRUE,
+        all.files = TRUE
+    )
+    result <- rJava::.jpackage(
+        pkgname,
+        lib.loc = libname,
+        morePaths = jars_inst
+    )
+    if (!result) {
+        stop("Loading java packages failed", call. = FALSE)
+    }
+
+    # If java version >= 21, reload the dictionnaries
+    has_java <- rjd3jars::check_java_version(silent = TRUE)
+    if (has_java) {
+        rjd3jars::reload_dictionaries()
     }
 }

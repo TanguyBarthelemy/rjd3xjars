@@ -28,8 +28,6 @@ navbar:
       menu:
       - text: rjd3jars
         href: https://github.com/rjdverse/rjd3jars
-      - text: rjd3toolkit
-        href: https://github.com/rjdverse/rjd3toolkit
       - text: rjd3sts
         href: https://github.com/rjdverse/rjd3sts
       - text: rjd3highfreq
