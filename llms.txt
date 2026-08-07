@@ -1,4 +1,4 @@
-# rjd3xjars
+# {rjd3xjars}
 
 R interface giving access to advanced SA methods (for instance time
 dependent ARIMA) as implemented in JDemetra+ v3.x.

@@ -19,7 +19,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 #### Added
 
-- new packageStartupMessage when java version \< 21
+- New [`packageStartupMessage()`](https://rdrr.io/r/base/message.html)
+  when Java version \< 21
+
+#### Fixed
+
+- Bug when loading the package with `devtools::load_all()`
 
 ### [0.1.0](https://github.com/rjdverse/rjd3xjars/releases/tag/v0.1.0) - 2026-04-21
 

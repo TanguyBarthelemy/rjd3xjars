@@ -4,7 +4,7 @@
 
 - **Jean Palate**. Author.
 
-- **Tanguy Barthelemy**. Author, maintainer.
+- **Tanguy Barthelemy**. Author, maintainer, copyright holder.
 
 ## Citation
 
