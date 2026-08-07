@@ -1,9 +1,12 @@
+
+#' @noRd
 #' @importFrom rjd3jars check_java_version
 .onAttach <- function(libname, pkgname) {
     # Check java version
     rjd3jars::check_java_version(silent = FALSE, startup = TRUE)
 }
 
+#' @noRd
 #' @importFrom rJava .jpackage
 #' @importFrom rjd3jars check_java_version reload_dictionaries
 .onLoad <- function(libname, pkgname) {
