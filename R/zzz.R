@@ -1,4 +1,3 @@
-
 #' @noRd
 #' @importFrom rjd3jars check_java_version
 .onAttach <- function(libname, pkgname) {
