@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rjd3xjars
+# {rjd3xjars}
 
 <!-- badges: start -->
 

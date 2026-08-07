@@ -16,11 +16,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-* New packageStartupMessage when java version < 21
+* New `packageStartupMessage()` when Java version < 21
 
 ### Fixed
 
-* Bug when loading the pacakge with `devtools::load_all()`
+* Bug when loading the package with `devtools::load_all()`
 
 
 ## [0.1.0] - 2026-04-21
