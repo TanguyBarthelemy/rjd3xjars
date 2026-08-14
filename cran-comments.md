@@ -3,7 +3,7 @@
 
 ### R CMD check results
 
-* checked on windows, mac, ubuntu (with GitHub actions) checked on CRAN [win-builder](https://win-builder.r-project.org/)
+* checked on windows, mac, ubuntu (with GitHub actions) and checked on CRAN [win-builder](https://win-builder.r-project.org/)
 * Checked with {checktor} and {goodpractice}
 * Maintainer email adress has changed
 * New maintainer: Tanguy Barthelemy <timeserieswithjdemetraandr@gmail.com>
